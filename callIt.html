@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2 style="text-align:center;">Lumber One Calculator</h2>
+    
+    <label >Enter First Number</label><br>
+    <input type="number" id="firstNumber" ><br><br>
+    <label >  Enter Second Number</label><br>
+    <input type="number" id="secondNumber"><br>
+
+
+    <br><p>Select Operation</p>
+    <button type="button" onclick="calculator('+')" style="margin-right: 10px; padding: 10px;">+</button>
+    <button type="button" onclick="calculator('-')" style="margin-right: 10px; padding: 10px;">-</button>
+    <button type="button" onclick="calculator('*')" style="margin-right: 10px; padding: 10px;">*</button>
+    <button type="button" onclick="calculator('/')" style="margin-right: 10px; padding: 10px;">/</button>
+
+    <p id="display"></p>
+
+    <h2 style="text-align:center">Pro Calculator</h2>
+    <label>Enter Expression</label><br>
+    <input type="text" id="expression"><br><br>
+    <button type="button" onclick="proCalculator()" style="margin-right: 10px; padding: 10px;">Let's Calculate</button>
+    <p id="proDisplay"></p>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        function calculator(x){
+
+            if(x == '+'){
+                let a = parseInt(document.getElementById("firstNumber").value)
+                let b = parseInt(document.getElementById("secondNumber").value)
+                document.getElementById("display").innerHTML = "Addition of given number is: " + (a + b)
+                    
+            }else if(x == '-'){
+                let a = parseInt(document.getElementById("firstNumber").value)
+                let b = parseInt(document.getElementById("secondNumber").value)
+                document.getElementById("display").innerHTML ="Subtraction of given number is: " + (a - b)
+            }else if(x == '*'){
+                let a = parseInt(document.getElementById("firstNumber").value)
+                let b = parseInt(document.getElementById("secondNumber").value)
+                document.getElementById("display").innerHTML =  "Multiplication of given number is: " + (a * b)
+            }else if(x == '/'){
+                let a = parseInt(document.getElementById("firstNumber").value)
+                let b = parseInt(document.getElementById("secondNumber").value)
+                if(b == 0){
+                    document.getElementById("display").innerHTML = "Cannot Divide By 0"
+                }else{
+                    document.getElementById("display").innerHTML = "Division of given number is: " + (a / b)
+                }
+                
+            }
+                    
+        }
+        function proCalculator(){
+            let a = document.getElementById("expression").value
+            let digits = ""
+            let firstNumber = ""
+            let secondNumber = ""
+            let operator = ""
+            for(let  i = 0 ; i < a.length ; i++){
+                
+                if(a[i] == '+' || a[i] == '-' || a[i] == '*' || a[i] == '/'){
+                    operator = a[i]
+                    firstNumber = digits
+                    digits = ""
+                }else{
+                    digits = digits + a[i]
+                    secondNumber = digits
+
+                }
+            }
+
+            let newFirst = parseInt(firstNumber)
+            let newSecond = parseInt(secondNumber)
+
+            if(operator == "+"){
+                document.getElementById("proDisplay").innerHTML = "The Calculation of Given Expression is: "  + (newFirst + newSecond)
+            }else if(operator == "-"){
+                document.getElementById("proDisplay").innerHTML = "The Calculation of Given Expression is: "  + (newFirst - newSecond)
+            }else if(operator == "*"){
+                document.getElementById("proDisplay").innerHTML = "The Calculation of Given Expression is: "  + (newFirst * newSecond)
+            }else if(operator == "/"){
+                if(secondNumber != 0){
+                    document.getElementById("proDisplay").innerHTML = "The Calculation of Given Expression is: "  + (newFirst / newSecond)
+                }else{
+                    document.getElementById("proDisplay").innerHTML = "Cannot Divide By 0"
+                }
+                
+            }
+
+
+            console.log("First Number is: " + newFirst)
+            console.log("Second Number is: " + newSecond)
+        }
+    </script>
+   
+
+</body>
+</html>
